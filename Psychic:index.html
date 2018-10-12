@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" href="wordgame.css">
+
+    
+
+</head>
+<body>
+    <nav>
+        <h1>The Psychic Game</h1>
+    </nav>
+   
+    <h2>Guess What Letter I'am thinkig of?</h2>
+    <p>Enter yout Letter.</p>
+    <p id="guess">Your guesses:</p>
+    <p id="wins">Wins:</p>
+    <p id="lose">Lose:</p>
+    <p id="guessLeft">Guesses Left:</p>
+    
+    <script type="text/javascript">
+        
+        var letter = [ "a", "b", "c", "d", "e","f"];
+        //for(var i=0; i=letters.length; i++);
+        
+        var theLetter =letter[Math.floor(Math.random() * letter.length)];
+        var opportunites = "7"
+        var wins ="0"
+        var lose ="0"
+
+        document.onkeyup = function(event){
+            console.log("Correct Answer: " + theLetter);
+            var letter= event.key;
+            document.getElementById("guess").append(letter +""+",");
+
+            opportunites--;
+            document.getElementById("guessLeft").innerHTML = "Guesses Left: " + opportunites;
+
+            if(opportunites==0){
+                lose++;
+                document.getElementById("lose").innerHTML= "lose;" + lose;
+                document.getElementById("guess").innerHTML = "Your Gueses  So Far:";
+                opportunites = 7;
+                alert("You lose!");
+                theLetter = letter[Math.floor(Math.random() * letter.length)];
+            
+            }
+
+            if ( letter === theLetter){
+                wins++;
+                document.getElementById("wins").innerHTML = "Wins: " + wins;
+                document.getElementById("guess").innerHTML = "Your Guesses So Far: ";
+                opportunites = 7;
+                alert("You win!");
+                theLetter = letter[Math.floor(Math.random() * letter.length)];
+              
+            }
+            
+
+
+
+
+
+
+
+
+        }
+    
+    </script>
+
+
+   
+</body>
+</html>
